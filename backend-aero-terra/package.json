@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend": "node ./server.js --watch"
+    "backend": "node ./server.js --watch",
+    "start": "node ./server.js"
   },
   "keywords": [],
   "author": "",
