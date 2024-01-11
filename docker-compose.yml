@@ -1,30 +1,27 @@
 version: '3'
 services:
-  # Frontend service
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      REACT_APP_API_URL: http://backend:5000 # Change this based on your backend API endpoint
-    volumes:
-      - ./frontend:/app
-    command: npm start
-    depends_on:
-      - backend
-
-  # Backend service
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    environment:
-      NODE_ENV: production # Set to 'production' for a production environment
-      # Add any other environment variables your Express app needs
-    volumes:
-      - ./backend:/app
-    command: npm start
+    frontend:
+      container_name: frontend
+      build:
+        context: ./aero-terra-challenge
+        dockerfile: Dockerfile
+      ports:
+        - "8080:5173"
+      environment:
+        REACT_APP_API_URL: http://backend:3000
+      volumes:
+        - ./frontend:/app
+      command: npm run dev -- --host "0.0.0.0" --port 5173
+      depends_on:
+        - backend
+    
+    backend:
+      container_name: backend
+      build:
+        context: ./backend-aero-terra
+        dockerfile: Dockerfile
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./backend-aero-terra:/app
+      command: npm start

@@ -14,8 +14,8 @@ const config = {
 };
 
 const corsOptions = {
-  origin: "http://localhost:5173",
-  methods: "GET",
+  // origin: "*",
+  // methods: "GET",
 };
 
 app.use(cors(corsOptions));
@@ -50,6 +50,6 @@ app.get("/api/barrios", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen("3000", "0.0.0.0",() => {
   console.log("Proxy server listening on port 3000");
 });
