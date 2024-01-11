@@ -1,0 +1,30 @@
+version: '3'
+services:
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://backend:5000 # Change this based on your backend API endpoint
+    volumes:
+      - ./frontend:/app
+    command: npm start
+    depends_on:
+      - backend
+
+  # Backend service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production # Set to 'production' for a production environment
+      # Add any other environment variables your Express app needs
+    volumes:
+      - ./backend:/app
+    command: npm start

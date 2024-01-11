@@ -1,0 +1,88 @@
+#root {
+  text-align: center;
+  display: grid;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+
+#root{
+  grid-template-areas: 
+  "header header header"
+  "map map filters"
+  "map map filters"
+  "map map filters"
+  ;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+}
+
+
+#root > h1{
+  grid-area: header;
+
+  justify-content: center;
+  align-self: center;
+
+}
+
+#root > div:first-child{
+  grid-area: filters;
+  padding: 2rem;
+
+  place-content:  center;
+}
+
+#root > div > .filters  {
+  box-sizing: border-box;
+  margin: .4rem;
+  padding: 1rem;
+  min-width: 500px;
+  width: 100%;
+}
+
+#root > div:last-child{
+  grid-area: map;
+}
+
+
+
+.search{
+  margin-top: 2rem;
+}
+
+.inputFormat{
+  text-align: center;
+  font-family: inherit;
+  width: 60%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1rem;
+  color: #fff;
+  margin: 1rem 0 2rem 0;
+  padding: 10px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.inputFormat > datalist {
+  text-align: center;
+}
+
+
+
+@media (width < 600px){
+  
+#root{
+  grid-template-areas: 
+  "header header "
+  "filters filters"
+  "map map"
+  "map map"
+  ;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+}
+
+}
